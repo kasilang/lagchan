@@ -38,11 +38,11 @@ export default function Thread() {
 
       {/* Navigation */}
       <div className="retro-navbar">
-        <Link href="/"><a>[Home]</a></Link>
-        <Link href={`/${boardSlug}`}><a>[Return to Board]</a></Link>
+        <Link href="/">[Home]</Link>
+        <Link href={`/${boardSlug}`}>[Return to Board]</Link>
         <a href="#bottom">[Bottom]</a>
-        <Link href="/faq"><a>[FAQ]</a></Link>
-        <Link href="/rules"><a>[Rules]</a></Link>
+        <Link href="/faq">[FAQ]</Link>
+        <Link href="/rules">[Rules]</Link>
       </div>
 
       {/* Ad Banner */}
@@ -91,10 +91,10 @@ export default function Thread() {
 
       {/* Footer */}
       <div className="retro-footer">
-        <Link href="/"><a>Home</a></Link> | 
-        <Link href={`/${boardSlug}`}><a>/{boardSlug}/</a></Link> | 
-        <Link href="/faq"><a>FAQ</a></Link> | 
-        <Link href="/rules"><a>Rules</a></Link>
+        <Link href="/">Home</Link> | 
+        <Link href={`/${boardSlug}`}>/{boardSlug}/</Link> | 
+        <Link href="/faq">FAQ</Link> | 
+        <Link href="/rules">Rules</Link>
       </div>
     </div>
   );

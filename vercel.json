@@ -4,6 +4,7 @@
       "runtime": "@vercel/node"
     }
   },
+  "outputDirectory": "dist/public",
   "rewrites": [
     {
       "source": "/uploads/(.*)",
@@ -18,5 +19,5 @@
       "destination": "/index.html"
     }
   ],
-  "buildCommand": "vite build"
+  "buildCommand": "npm run build"
 }
