@@ -98,9 +98,10 @@ The application uses three main entities:
 
 ### Hosting Platform
 - **Target**: Replit with autoscale deployment
-- **Port**: 5000 (mapped to 80 externally)
+- **Port**: 5000 (mapped externally)
 - **Process**: NPM scripts for dev/build/start lifecycle
-- **Database**: PostgreSQL 16 module integration
+- **Database**: PostgreSQL via built-in Replit database or environment variable
+- **Migration**: Moved from Netlify static hosting to Replit full-stack hosting for API support
 
 ## Changelog
 - June 24, 2025: Initial setup with retro 2000s-style imageboard
@@ -113,6 +114,7 @@ The application uses three main entities:
 - June 24, 2025: Fixed database connection failures with proper error handling and fallback
 - June 24, 2025: Resolved React DOM nesting warnings in navigation components
 - June 24, 2025: Updated Netlify deployment configuration with proper build command and asset paths
+- January 24, 2025: Migrated from Netlify to Replit for full-stack deployment support (API endpoints were not available on Netlify static hosting)
 
 ## User Preferences
 
