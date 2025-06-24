@@ -7,13 +7,22 @@ import AdBanner from "@/components/AdBanner";
 export default function Board() {
   const { boardSlug } = useParams();
   
-  const { data: board } = useQuery({
+  const { data: board, isLoading: boardLoading, error: boardError } = useQuery({
     queryKey: [`/api/boards/${boardSlug}`],
   });
 
-  const { data: threads } = useQuery({
+  const { data: threads, isLoading: threadsLoading } = useQuery({
     queryKey: [`/api/boards/${boardSlug}/threads`],
+    enabled: !!board,
   });
+
+  if (boardLoading) {
+    return <div>Loading board...</div>;
+  }
+
+  if (boardError) {
+    return <div>Error loading board: {boardError.message}</div>;
+  }
 
   if (!board) {
     return <div>Board not found</div>;

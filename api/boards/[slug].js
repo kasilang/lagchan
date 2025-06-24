@@ -23,9 +23,11 @@ const boards = [
 ];
 
 export default function handler(req, res) {
+  // Set CORS headers
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  res.setHeader('Cache-Control', 'no-cache');
   
   if (req.method === 'OPTIONS') {
     res.status(200).end();
@@ -34,11 +36,17 @@ export default function handler(req, res) {
   
   const { slug } = req.query;
   
+  console.log(`Board lookup for slug: ${slug}`);
+  
   if (req.method === 'GET') {
     const board = boards.find(b => b.slug === slug);
+    console.log(`Found board:`, board);
+    
     if (!board) {
-      return res.status(404).json({ error: 'Board not found' });
+      console.log(`Board not found for slug: ${slug}`);
+      return res.status(404).json({ error: `Board '${slug}' not found` });
     }
+    
     res.status(200).json(board);
   } else {
     res.status(405).json({ error: 'Method not allowed' });

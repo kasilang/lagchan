@@ -1,8 +1,0 @@
-[build]
-  publish = "public"
-  command = "vite build --outDir public/dist && cp public/dist/* public/"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200

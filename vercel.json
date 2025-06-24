@@ -4,8 +4,18 @@
   "outputDirectory": "public",
   "rewrites": [
     {
-      "source": "/((?!api|_next|_static|favicon.ico).*)",
+      "source": "/((?!api|assets|favicon.ico).*)",
       "destination": "/index.html"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/api/(.*)",
+      "headers": [
+        { "key": "Access-Control-Allow-Origin", "value": "*" },
+        { "key": "Access-Control-Allow-Methods", "value": "GET, POST, OPTIONS" },
+        { "key": "Access-Control-Allow-Headers", "value": "Content-Type" }
+      ]
     }
   ]
 }

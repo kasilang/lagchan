@@ -27,9 +27,11 @@ let threads = [];
 let nextThreadId = 1;
 
 export default function handler(req, res) {
+  // Set CORS headers
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  res.setHeader('Cache-Control', 'no-cache');
   
   if (req.method === 'OPTIONS') {
     res.status(200).end();
@@ -37,10 +39,14 @@ export default function handler(req, res) {
   }
   
   const { slug } = req.query;
+  console.log(`Threads lookup for board slug: ${slug}`);
+  
   const board = boards.find(b => b.slug === slug);
+  console.log(`Found board for threads:`, board);
   
   if (!board) {
-    return res.status(404).json({ error: 'Board not found' });
+    console.log(`Board not found for threads slug: ${slug}`);
+    return res.status(404).json({ error: `Board '${slug}' not found` });
   }
   
   if (req.method === 'GET') {
