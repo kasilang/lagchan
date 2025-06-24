@@ -38,13 +38,8 @@ app.use((req, res, next) => {
 });
 
 (async () => {
-  // Initialize database with seed data
-  try {
-    await (storage as any).seedInitialData();
-    log("Database initialized with seed data");
-  } catch (error) {
-    log(`Failed to initialize database: ${error}`);
-  }
+  // MemStorage initializes with seed data in constructor
+  log("Using in-memory storage with seed data");
 
   const server = await registerRoutes(app);
 
