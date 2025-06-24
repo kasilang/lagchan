@@ -110,6 +110,9 @@ The application uses three main entities:
 - June 24, 2025: Fixed posting functionality and form validation
 - June 24, 2025: Configured for Netlify deployment with /public structure
 - June 24, 2025: Migrated from in-memory storage to Supabase PostgreSQL database
+- June 24, 2025: Fixed database connection failures with proper error handling and fallback
+- June 24, 2025: Resolved React DOM nesting warnings in navigation components
+- June 24, 2025: Updated Netlify deployment configuration with proper build command and asset paths
 
 ## User Preferences
 
