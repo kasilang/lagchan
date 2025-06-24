@@ -70,14 +70,15 @@ app.use((req, res, next) => {
     serveStatic(app);
   }
 
-  // ALWAYS serve the app on port 5000
-  // this serves both the API and the client.
-  // It is the only port that is not firewalled.
-  const port = 5000;
+  // ALWAYS serve the app on port 5000 for Replit
+  // For Vercel, use the PORT environment variable
+  const port = process.env.PORT || 5000;
+  const host = process.env.VERCEL ? "0.0.0.0" : "0.0.0.0";
+  
   server.listen({
-    port,
-    host: "0.0.0.0",
-    reusePort: true,
+    port: parseInt(port.toString()),
+    host,
+    reusePort: !process.env.VERCEL,
   }, () => {
     log(`serving on port ${port}`);
   });

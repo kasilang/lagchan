@@ -97,12 +97,16 @@ The application uses three main entities:
 - File Storage: Local filesystem with configurable upload directory
 
 ### Hosting Platform
-- **Primary**: Replit with autoscale deployment for development
-- **Production**: Vercel with serverless functions for API endpoints
-- **Port**: 5000 (mapped externally) for Replit
+- **Development**: Replit with autoscale deployment
+- **Production Options**: 
+  - Railway (recommended for full-stack Node.js apps)
+  - Render (free tier available)
+  - Vercel (with build configuration)
+  - Docker deployment
+- **Port**: 5000 (configurable via PORT environment variable)
 - **Process**: NPM scripts for dev/build/start lifecycle
 - **Database**: PostgreSQL via built-in Replit database or environment variable
-- **API**: Converted Express routes to Vercel serverless functions for production deployment
+- **Build**: Vite for frontend, ESBuild for backend bundling
 
 ## Changelog
 - June 24, 2025: Initial setup with retro 2000s-style imageboard
@@ -116,7 +120,7 @@ The application uses three main entities:
 - June 24, 2025: Resolved React DOM nesting warnings in navigation components
 - June 24, 2025: Updated Netlify deployment configuration with proper build command and asset paths
 - January 24, 2025: Migrated from Netlify to Replit for full-stack deployment support (API endpoints were not available on Netlify static hosting)
-- January 24, 2025: Added Vercel serverless functions for production deployment with proper API endpoint handling
+- January 24, 2025: Added multiple deployment configurations (Railway, Render, Vercel, Docker) for production hosting flexibility
 
 ## User Preferences
 
