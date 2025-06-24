@@ -33,10 +33,10 @@ export default function Board() {
 
       {/* Navigation */}
       <div className="retro-navbar">
-        <Link href="/"><a>[Home]</a></Link>
-        <Link href={`/${boardSlug}`}><a>[Return to Board]</a></Link>
-        <Link href="/faq"><a>[FAQ]</a></Link>
-        <Link href="/rules"><a>[Rules]</a></Link>
+        <Link href="/">[Home]</Link>
+        <Link href={`/${boardSlug}`}>[Return to Board]</Link>
+        <Link href="/faq">[FAQ]</Link>
+        <Link href="/rules">[Rules]</Link>
       </div>
 
       {/* Ad Banner */}
@@ -73,10 +73,8 @@ export default function Board() {
               backgroundColor: 'hsl(210, 35%, 89%)'
             }}>
               <div style={{ fontSize: '9pt', marginBottom: '5px' }}>
-                <Link href={`/${boardSlug}/thread/${thread.id}`}>
-                  <a style={{ fontWeight: 'bold', fontSize: '10pt' }}>
-                    {thread.subject || `Thread #${thread.id}`}
-                  </a>
+                <Link href={`/${boardSlug}/thread/${thread.id}`} style={{ fontWeight: 'bold', fontSize: '10pt' }}>
+                  {thread.subject || `Thread #${thread.id}`}
                 </Link>
                 <span style={{ marginLeft: '10px', color: '#666' }}>
                   Started {new Date(thread.createdAt).toLocaleDateString()}

@@ -38,12 +38,17 @@ app.use((req, res, next) => {
 });
 
 (async () => {
-  // Initialize database with seed data
+  // Initialize storage with seed data
   try {
-    await (storage as any).seedInitialData();
-    log("Database initialized with seed data");
+    if (typeof (storage as any).seedInitialData === 'function') {
+      await (storage as any).seedInitialData();
+      log("Storage initialized with seed data");
+    } else {
+      log("Storage already seeded");
+    }
   } catch (error) {
-    log(`Failed to initialize database: ${error}`);
+    log(`Failed to initialize storage: ${error}`);
+    // Don't crash the app, continue with empty storage
   }
 
   const server = await registerRoutes(app);

@@ -1,5 +1,5 @@
 import { boards, threads, posts, type Board, type Thread, type Post, type InsertBoard, type InsertThread, type InsertPost, type ThreadWithPosts, type BoardWithStats } from "@shared/schema";
-import { db } from "./db";
+import { db, initializeDatabase } from "./db";
 import { eq, desc, sql } from "drizzle-orm";
 
 export interface IStorage {
@@ -194,15 +194,24 @@ export class MemStorage implements IStorage {
 
 export class DatabaseStorage implements IStorage {
   async getBoards(): Promise<Board[]> {
+    if (!db) {
+      throw new Error("Database not initialized");
+    }
     return await db.select().from(boards).orderBy(boards.id);
   }
 
   async getBoardBySlug(slug: string): Promise<Board | undefined> {
+    if (!db) {
+      throw new Error("Database not initialized");
+    }
     const [board] = await db.select().from(boards).where(eq(boards.slug, slug));
     return board || undefined;
   }
 
   async createBoard(insertBoard: InsertBoard): Promise<Board> {
+    if (!db) {
+      throw new Error("Database not initialized");
+    }
     const [board] = await db
       .insert(boards)
       .values(insertBoard)
@@ -211,6 +220,9 @@ export class DatabaseStorage implements IStorage {
   }
 
   async getThreadsByBoard(boardId: number, page = 1, limit = 10): Promise<Thread[]> {
+    if (!db) {
+      throw new Error("Database not initialized");
+    }
     const offset = (page - 1) * limit;
     return await db
       .select()
@@ -247,6 +259,9 @@ export class DatabaseStorage implements IStorage {
   }
 
   async bumpThread(threadId: number): Promise<void> {
+    if (!db) {
+      throw new Error("Database not initialized");
+    }
     await db
       .update(threads)
       .set({ lastBumpAt: new Date() })
@@ -254,6 +269,9 @@ export class DatabaseStorage implements IStorage {
   }
 
   async getPostsByThread(threadId: number): Promise<Post[]> {
+    if (!db) {
+      throw new Error("Database not initialized");
+    }
     return await db
       .select()
       .from(posts)
@@ -262,6 +280,9 @@ export class DatabaseStorage implements IStorage {
   }
 
   async getLatestPosts(limit = 10): Promise<(Post & { boardSlug: string })[]> {
+    if (!db) {
+      throw new Error("Database not initialized");
+    }
     const latestPosts = await db
       .select({
         id: posts.id,
@@ -282,6 +303,9 @@ export class DatabaseStorage implements IStorage {
   }
 
   async createPost(insertPost: InsertPost): Promise<Post> {
+    if (!db) {
+      throw new Error("Database not initialized");
+    }
     const [post] = await db
       .insert(posts)
       .values(insertPost)
@@ -294,6 +318,9 @@ export class DatabaseStorage implements IStorage {
   }
 
   async getBoardStats(): Promise<{ totalPosts: number; activeThreads: number; onlineUsers: number }> {
+    if (!db) {
+      throw new Error("Database not initialized");
+    }
     const [postCount] = await db
       .select({ count: sql<number>`count(*)` })
       .from(posts);
@@ -310,6 +337,9 @@ export class DatabaseStorage implements IStorage {
   }
 
   async seedInitialData(): Promise<void> {
+    if (!db) {
+      throw new Error("Database not initialized");
+    }
     // Check if boards already exist
     const existingBoards = await this.getBoards();
     if (existingBoards.length > 0) {
@@ -356,4 +386,20 @@ export class DatabaseStorage implements IStorage {
   }
 }
 
-export const storage = new DatabaseStorage();
+// Create storage instance with fallback
+function createStorage(): IStorage {
+  try {
+    const database = initializeDatabase();
+    if (database) {
+      console.log("Using database storage");
+      return new DatabaseStorage();
+    }
+  } catch (error) {
+    console.error("Database initialization failed, falling back to memory storage:", error);
+  }
+  
+  console.log("Using in-memory storage");
+  return new MemStorage();
+}
+
+export const storage = createStorage();
