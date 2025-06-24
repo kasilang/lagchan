@@ -1,0 +1,60 @@
+Make an text/image board site for me! use nhost for database, no need to put mock/fake users, make a specific thread for /text/ or Green-Text. this is anonymous everyone is anon, make sure image posts just like in futaba, also when someone first goes to the home page there's a closable chat bubble that says. "Ako nga pala si Ka Silang. Sole proprietor, site admin, webdev, at designated theorist-in-residence.
+Mahal ko ang dialectical materialism at pusa. Yung literal at yung metaphorical.
+Enjoy mo to habang libre pa. Pag nainis ako, magiging .onion na lang to."
+Title: lagchan About: Lagchan is a user-run, self-coded Filipino-English forum for posting, overposting, and occasionally, class struggle. Threads range from theory debates to full-blown meme psychosis. Expect schizo ramblings, Taglish sarcasm, and the occasional NPA LARP.
+Post responsibly or get dialectically ratio’d. rules: 📜 Lagchan Rules (Short & Unholy)
+No MAGAtards, anarcho-furries, or Facebook centrists.
+
+Post theory or post hole.
+
+NSFW allowed. Crime? No. Cringe? Also no.
+
+Mods are Godless. Don’t beg.
+
+LARP responsibly.
+
+Coño posts get gulagged.
+
+No landlording, no lib whining, no Jesus cosplay.
+
+If you cry, you lose.
+
+Touch grass, not your cousin.
+
+Long live the Lag.
+include a FAQS, contacts and legal page
+site design: Front page: endchan style, Thread page: futaba style
+color scheme: futaba orange
+also add some ads just like endchan and futaba
+make sure the catalog/pagination works
+navigation bar:
+/gen/ /memes/ /pol/ /coal/ /gem/
+
+
+MAKE SURE IT LOOKS OLD SCHOOL STYLE LIKE 2000S STYLE, add fake ads
+add Latest Posts area
+--Board Groups-- 
+
+Random:
+/green/ Green-Text
+/d/ Debates
+/hot/ Hot Takes
+/schizo/ Schizoposting
+/feces/ Fecesposting
+
+Communism
+/marx/ Marxism-Leninism
+/np/ - NPA/CPP
+
+Hobby:
+/phys/ Physics
+/math/ Math
+/it/ IT
+
+Brain-rots
+/cap/ Inhumanities of Capitalism
+/ana/ Anarchist Brain-rot
+/lib/ Liberal Brain-rot
+/theism/ Theist Brain-rot
+/west/ Western Brain-rot
+/maga/ MAGA Brain-rot
