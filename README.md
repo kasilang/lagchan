@@ -16,8 +16,9 @@ A full-stack anonymous imageboard application built with React, Express, and Typ
 
 ### Vercel
 1. Connect your GitHub repo to Vercel
-2. The project will deploy as a Node.js application
-3. All routes are handled by the Express server
+2. Uses simplified build process with zero-config deployment
+3. Basic API endpoints provided in /api/index.js
+4. Frontend served from /public directory
 
 ### Docker
 ```bash

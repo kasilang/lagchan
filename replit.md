@@ -121,6 +121,7 @@ The application uses three main entities:
 - June 24, 2025: Updated Netlify deployment configuration with proper build command and asset paths
 - January 24, 2025: Migrated from Netlify to Replit for full-stack deployment support (API endpoints were not available on Netlify static hosting)
 - January 24, 2025: Added multiple deployment configurations (Railway, Render, Vercel, Docker) for production hosting flexibility
+- January 24, 2025: Created simplified Vercel deployment using zero-config approach with basic API fallback to resolve build command issues
 
 ## User Preferences
 
