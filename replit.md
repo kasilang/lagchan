@@ -126,6 +126,7 @@ The application uses three main entities:
 - January 24, 2025: Restructured Vercel deployment to use proper serverless functions instead of single Express app for better routing compatibility
 - January 24, 2025: Fixed build configuration by removing Netlify artifacts and implementing proper Vercel routing with enhanced error handling and logging
 - January 24, 2025: Fixed "body stream already read" error in Vercel API endpoints by implementing proper request body parsing for serverless functions
+- January 24, 2025: Created hybrid deployment strategy - Replit uses in-memory storage, Vercel uses Supabase database with Neon serverless driver
 
 ## User Preferences
 

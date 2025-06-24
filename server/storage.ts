@@ -337,14 +337,15 @@ export class DatabaseStorage implements IStorage {
   }
 
   async seedInitialData(): Promise<void> {
-    if (!db) {
-      throw new Error("Database not initialized");
-    }
-    // Check if boards already exist
-    const existingBoards = await this.getBoards();
-    if (existingBoards.length > 0) {
-      return; // Data already seeded
-    }
+    try {
+      if (!db) {
+        throw new Error("Database not initialized");
+      }
+      // Check if boards already exist
+      const existingBoards = await this.getBoards();
+      if (existingBoards.length > 0) {
+        return; // Data already seeded
+      }
 
     // Create boards based on the specification
     const boardData = [
@@ -383,21 +384,16 @@ export class DatabaseStorage implements IStorage {
     for (const boardInfo of boardData) {
       await this.createBoard(boardInfo);
     }
+    } catch (error) {
+      console.error("Database seed error:", error);
+      throw error;
+    }
   }
 }
 
-// Create storage instance with fallback
+// Create storage instance - use memory storage for Replit stability
 function createStorage(): IStorage {
-  try {
-    const database = initializeDatabase();
-    if (database) {
-      console.log("Using database storage");
-      return new DatabaseStorage();
-    }
-  } catch (error) {
-    console.error("Database initialization failed, falling back to memory storage:", error);
-  }
-  
+  // Force memory storage for Replit to avoid database connection issues
   console.log("Using in-memory storage");
   return new MemStorage();
 }

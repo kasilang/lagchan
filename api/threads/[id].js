@@ -1,9 +1,8 @@
-// Simple in-memory storage
-let threads = [];
-let posts = [];
-let nextPostId = 1000;
+import { getDb, initializeDatabase } from '../setup-db.js';
 
-export default function handler(req, res) {
+let dbInitialized = false;
+
+export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
@@ -17,47 +16,44 @@ export default function handler(req, res) {
   const { id } = req.query;
   const threadId = parseInt(id);
   
-  if (req.method === 'GET') {
-    console.log(`Getting thread ${threadId}`);
+  try {
+    const sql = getDb();
     
-    // Find existing thread or return sample
-    let thread = threads.find(t => t.id === threadId);
-    let threadPosts = posts.filter(p => p.threadId === threadId);
-    
-    if (!thread) {
-      // Return a sample thread
-      thread = {
-        id: threadId,
-        boardId: 1,
-        subject: 'Sample Thread',
-        isSticky: false,
-        isLocked: false,
-        createdAt: new Date(),
-        lastBumpAt: new Date()
-      };
-      
-      threadPosts = [
-        {
-          id: 1,
-          threadId: threadId,
-          boardId: 1,
-          content: 'This is a sample post. Create threads on Replit for full functionality.',
-          imageUrl: null,
-          imageName: null,
-          createdAt: new Date()
-        }
-      ];
+    if (!sql) {
+      console.log('No database connection');
+      return res.status(500).json({ error: 'Database not available' });
     }
     
-    const result = {
-      ...thread,
-      posts: threadPosts,
-      postCount: threadPosts.length
-    };
+    // Initialize database if needed
+    if (!dbInitialized) {
+      await initializeDatabase();
+      dbInitialized = true;
+    }
     
-    res.status(200).json(result);
-  } else if (req.method === 'POST') {
-    try {
+    if (req.method === 'GET') {
+      console.log(`Getting thread ${threadId}`);
+      
+      const threads = await sql`SELECT * FROM threads WHERE id = ${threadId}`;
+      const thread = threads[0];
+      
+      if (!thread) {
+        return res.status(404).json({ error: 'Thread not found' });
+      }
+      
+      const posts = await sql`
+        SELECT * FROM posts 
+        WHERE thread_id = ${threadId}
+        ORDER BY created_at ASC
+      `;
+      
+      const result = {
+        ...thread,
+        posts: posts,
+        postCount: posts.length
+      };
+      
+      res.status(200).json(result);
+    } else if (req.method === 'POST') {
       // Handle body parsing for Vercel
       let body = req.body;
       if (typeof body === 'string') {
@@ -69,31 +65,35 @@ export default function handler(req, res) {
         return res.status(400).json({ error: 'Content is required' });
       }
       
-      const now = new Date();
-      const post = {
-        id: nextPostId++,
-        threadId: threadId,
-        boardId: 1, // Default to first board
-        content,
-        imageUrl: null,
-        imageName: null,
-        createdAt: now
-      };
+      // Verify thread exists
+      const threads = await sql`SELECT * FROM threads WHERE id = ${threadId}`;
+      const thread = threads[0];
       
-      posts.push(post);
-      
-      // Update thread bump time if it exists
-      const thread = threads.find(t => t.id === threadId);
-      if (thread) {
-        thread.lastBumpAt = now;
+      if (!thread) {
+        return res.status(404).json({ error: 'Thread not found' });
       }
       
+      // Create post
+      const postResult = await sql`
+        INSERT INTO posts (thread_id, board_id, content)
+        VALUES (${threadId}, ${thread.board_id}, ${content})
+        RETURNING *
+      `;
+      const post = postResult[0];
+      
+      // Update thread bump time
+      await sql`
+        UPDATE threads 
+        SET last_bump_at = NOW()
+        WHERE id = ${threadId}
+      `;
+      
       res.status(200).json(post);
-    } catch (error) {
-      console.error('Error creating post:', error);
-      res.status(500).json({ error: 'Failed to create post' });
+    } else {
+      res.status(405).json({ error: 'Method not allowed' });
     }
-  } else {
-    res.status(405).json({ error: 'Method not allowed' });
+  } catch (error) {
+    console.error('Database error:', error);
+    res.status(500).json({ error: 'Database error' });
   }
 }
