@@ -2,9 +2,10 @@
   "version": 2,
   "buildCommand": "node simple-build.cjs",
   "outputDirectory": "public",
-  "functions": {
-    "api/index.js": {
-      "runtime": "nodejs18.x"
+  "rewrites": [
+    {
+      "source": "/((?!api|_next|_static|favicon.ico).*)",
+      "destination": "/index.html"
     }
-  }
+  ]
 }
