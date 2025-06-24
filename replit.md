@@ -109,6 +109,7 @@ The application uses three main entities:
 - June 24, 2025: Updated board structure per user requirements (Random, Communism, Hobby, Brain-rots)
 - June 24, 2025: Fixed posting functionality and form validation
 - June 24, 2025: Configured for Netlify deployment with /public structure
+- June 24, 2025: Migrated from in-memory storage to Supabase PostgreSQL database
 
 ## User Preferences
 
