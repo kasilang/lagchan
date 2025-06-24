@@ -20,7 +20,7 @@ export default function Legal() {
       </div>
 
       {/* Content */}
-      <div style={{ padding: '20px', backgroundColor: 'hsl(48, 35%, 89%)', margin: '10px 0', border: '1px solid var(--border)' }}>
+      <div style={{ padding: '20px', backgroundColor: 'hsl(210, 35%, 89%)', margin: '10px 0', border: '1px solid var(--border)' }}>
         <h2 style={{ color: 'var(--foreground)', marginBottom: '20px' }}>⚖️ Legal Information</h2>
         
         <div style={{ marginBottom: '20px' }}>

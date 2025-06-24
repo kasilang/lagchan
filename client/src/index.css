@@ -3,25 +3,25 @@
 @tailwind utilities;
 
 :root {
-  --background: hsl(60, 100%, 98%);
-  --foreground: hsl(0, 50%, 25%);
-  --muted: hsl(45, 20%, 92%);
-  --muted-foreground: hsl(25, 5.3%, 44.7%);
-  --popover: hsl(60, 100%, 98%);
-  --popover-foreground: hsl(0, 50%, 25%);
-  --card: hsl(48, 100%, 93%);
-  --card-foreground: hsl(0, 50%, 25%);
-  --border: hsl(0, 50%, 25%);
-  --input: hsl(45, 20%, 90%);
-  --primary: hsl(45, 80%, 65%);
-  --primary-foreground: hsl(0, 50%, 25%);
-  --secondary: hsl(45, 30%, 85%);
-  --secondary-foreground: hsl(24, 9.8%, 10%);
-  --accent: hsl(45, 30%, 85%);
-  --accent-foreground: hsl(24, 9.8%, 10%);
+  --background: hsl(210, 100%, 98%);
+  --foreground: hsl(220, 50%, 25%);
+  --muted: hsl(210, 20%, 92%);
+  --muted-foreground: hsl(215, 5.3%, 44.7%);
+  --popover: hsl(210, 100%, 98%);
+  --popover-foreground: hsl(220, 50%, 25%);
+  --card: hsl(210, 100%, 93%);
+  --card-foreground: hsl(220, 50%, 25%);
+  --border: hsl(220, 50%, 25%);
+  --input: hsl(210, 20%, 90%);
+  --primary: hsl(210, 80%, 65%);
+  --primary-foreground: hsl(220, 50%, 25%);
+  --secondary: hsl(210, 30%, 85%);
+  --secondary-foreground: hsl(220, 9.8%, 10%);
+  --accent: hsl(210, 30%, 85%);
+  --accent-foreground: hsl(220, 9.8%, 10%);
   --destructive: hsl(0, 84.2%, 60.2%);
-  --destructive-foreground: hsl(60, 9.1%, 97.8%);
-  --ring: hsl(0, 50%, 25%);
+  --destructive-foreground: hsl(210, 9.1%, 97.8%);
+  --ring: hsl(220, 50%, 25%);
   --radius: 0.25rem;
 }
 
@@ -69,7 +69,7 @@
 }
 
 .retro-header {
-  background-color: hsl(45, 80%, 65%);
+  background-color: hsl(210, 80%, 65%);
   padding: 10px;
   border-bottom: 2px solid var(--border);
 }
@@ -83,12 +83,12 @@
 
 .retro-tagline {
   font-size: 8pt;
-  color: hsl(220, 100%, 25%);
+  color: hsl(220, 100%, 95%);
   margin-top: 5px;
 }
 
 .retro-navbar {
-  background-color: hsl(45, 30%, 85%);
+  background-color: hsl(210, 30%, 85%);
   padding: 5px;
   border-bottom: 1px solid var(--border);
   font-size: 10pt;
@@ -106,7 +106,7 @@
 }
 
 .retro-navbar a:hover {
-  background-color: hsl(45, 80%, 65%);
+  background-color: hsl(210, 80%, 65%);
 }
 
 .retro-main {
@@ -131,11 +131,11 @@
 .board-group {
   margin-bottom: 20px;
   border: 1px solid var(--border);
-  background-color: hsl(48, 35%, 89%);
+  background-color: hsl(210, 35%, 89%);
 }
 
 .board-group-header {
-  background-color: hsl(45, 30%, 85%);
+  background-color: hsl(210, 30%, 85%);
   padding: 5px;
   font-weight: bold;
   font-size: 10pt;
@@ -166,12 +166,12 @@
 
 .latest-posts {
   border: 1px solid var(--border);
-  background-color: hsl(48, 35%, 89%);
+  background-color: hsl(210, 35%, 89%);
   margin-bottom: 15px;
 }
 
 .latest-posts-header {
-  background-color: hsl(45, 30%, 85%);
+  background-color: hsl(210, 30%, 85%);
   padding: 5px;
   font-weight: bold;
   font-size: 10pt;
@@ -250,7 +250,7 @@
 .retro-footer {
   border-top: 2px solid var(--border);
   padding: 10px;
-  background-color: hsl(45, 80%, 65%);
+  background-color: hsl(210, 80%, 65%);
   text-align: center;
   font-size: 8pt;
   color: var(--foreground);
@@ -264,12 +264,12 @@
 
 .news-section {
   border: 1px solid var(--border);
-  background-color: hsl(48, 35%, 89%);
+  background-color: hsl(210, 35%, 89%);
   margin-bottom: 15px;
 }
 
 .news-header {
-  background-color: hsl(45, 30%, 85%);
+  background-color: hsl(210, 30%, 85%);
   padding: 5px;
   font-weight: bold;
   font-size: 10pt;
@@ -284,7 +284,7 @@
 
 .stats-box {
   border: 1px solid var(--border);
-  background-color: hsl(48, 35%, 89%);
+  background-color: hsl(210, 35%, 89%);
   padding: 10px;
   margin-bottom: 15px;
   font-size: 9pt;
@@ -300,7 +300,7 @@
 .thread-post {
   margin-bottom: 10px;
   padding: 10px;
-  background-color: hsl(48, 35%, 89%);
+  background-color: hsl(210, 35%, 89%);
   border: 1px solid var(--border);
 }
 
@@ -336,7 +336,7 @@
 .reply-form {
   margin-top: 20px;
   padding: 10px;
-  background-color: hsl(48, 35%, 89%);
+  background-color: hsl(210, 35%, 89%);
   border: 1px solid var(--border);
 }
 
@@ -368,7 +368,7 @@
 }
 
 .form-table input[type="submit"] {
-  background-color: hsl(45, 30%, 85%);
+  background-color: hsl(210, 30%, 85%);
   border: 1px solid var(--border);
   padding: 3px 8px;
   font-size: 9pt;
@@ -376,5 +376,5 @@
 }
 
 .form-table input[type="submit"]:hover {
-  background-color: hsl(45, 80%, 65%);
+  background-color: hsl(210, 80%, 65%);
 }

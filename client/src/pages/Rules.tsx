@@ -20,48 +20,48 @@ export default function Rules() {
       </div>
 
       {/* Content */}
-      <div style={{ padding: '20px', backgroundColor: 'hsl(48, 35%, 89%)', margin: '10px 0', border: '1px solid var(--border)' }}>
+      <div style={{ padding: '20px', backgroundColor: 'hsl(210, 35%, 89%)', margin: '10px 0', border: '1px solid var(--border)' }}>
         <h2 style={{ color: 'var(--foreground)', marginBottom: '20px' }}>📜 Lagchan Rules (Short & Unholy)</h2>
         
         <div style={{ fontSize: '10pt', lineHeight: '1.5' }}>
           <div style={{ marginBottom: '15px', padding: '10px', backgroundColor: '#FFE4E1', border: '1px solid #FF6B6B' }}>
-            <strong>🚫 No MAGAtards, anarcho-furries, or Facebook centrists.</strong>
+            <strong>No MAGAtards, anarcho-furries, or Facebook centrists.</strong>
           </div>
 
           <div style={{ marginBottom: '15px', padding: '10px', backgroundColor: '#E6FFE6', border: '1px solid #32CD32' }}>
-            <strong>📚 Post theory or post hole.</strong>
+            <strong>Post theory or post hole.</strong>
           </div>
 
           <div style={{ marginBottom: '15px', padding: '10px', backgroundColor: '#FFF8DC', border: '1px solid #DAA520' }}>
-            <strong>🔞 NSFW allowed. Crime? No. Cringe? Also no.</strong>
+            <strong>NSFW allowed. Crime? No. Cringe? Also no.</strong>
           </div>
 
           <div style={{ marginBottom: '15px', padding: '10px', backgroundColor: '#F0F8FF', border: '1px solid #4169E1' }}>
-            <strong>⚡ Mods are Godless. Don't beg.</strong>
+            <strong>Mods are Godless. Don't beg.</strong>
           </div>
 
           <div style={{ marginBottom: '15px', padding: '10px', backgroundColor: '#FFF0F5', border: '1px solid #FF69B4' }}>
-            <strong>🎭 LARP responsibly.</strong>
+            <strong>LARP responsibly.</strong>
           </div>
 
           <div style={{ marginBottom: '15px', padding: '10px', backgroundColor: '#FFE4E1', border: '1px solid #FF6347' }}>
-            <strong>🏛️ Coño posts get gulagged.</strong>
+            <strong>Coño posts get gulagged.</strong>
           </div>
 
           <div style={{ marginBottom: '15px', padding: '10px', backgroundColor: '#F5F5DC', border: '1px solid #8B4513' }}>
-            <strong>🏠 No landlording, no lib whining, no Jesus cosplay.</strong>
+            <strong>No landlording, no lib whining, no Jesus cosplay.</strong>
           </div>
 
           <div style={{ marginBottom: '15px', padding: '10px', backgroundColor: '#E0FFFF', border: '1px solid #20B2AA' }}>
-            <strong>😭 If you cry, you lose.</strong>
+            <strong>If you cry, you lose.</strong>
           </div>
 
           <div style={{ marginBottom: '15px', padding: '10px', backgroundColor: '#F0FFF0', border: '1px solid #228B22' }}>
-            <strong>🌱 Touch grass, not your cousin.</strong>
+            <strong>Touch grass, not your cousin.</strong>
           </div>
 
           <div style={{ marginBottom: '15px', padding: '10px', backgroundColor: '#FFD700', border: '1px solid #FF8C00', textAlign: 'center' }}>
-            <strong>⭐ Long live the Lag. ⭐</strong>
+            <strong>Long live the Lag.</strong>
           </div>
         </div>
 

@@ -36,56 +36,36 @@ export class MemStorage implements IStorage {
   private seedData() {
     // Create boards based on the specification
     const boardData = [
-      // Popular
-      { slug: "chat", name: "Chat", description: "Real-time Anonymous Chat", category: "Popular" },
-      { slug: "gen", name: "General", description: "General Discussions", category: "Popular" },
-      { slug: "memes", name: "Memes", description: "Memes & Shitposting", category: "Popular" },
-      { slug: "pol", name: "Politics", description: "Politics (Proceed with Caution)", category: "Popular" },
+      // Popular (nav bar boards)
+      { slug: "gen", name: "General", description: "General Discussions", category: "Random" },
+      { slug: "memes", name: "Memes", description: "Memes & Shitposting", category: "Random" },
+      { slug: "pol", name: "Politics", description: "Politics (Proceed with Caution)", category: "Random" },
+      { slug: "coal", name: "Coal", description: "Coal Posts", category: "Random" },
+      { slug: "gem", name: "Gem", description: "Gem Posts", category: "Random" },
+      
+      // Random
+      { slug: "ph", name: "Philippines", description: "Philippines", category: "Random" },
+      { slug: "green", name: "Green-Text", description: "Green-Text Stories", category: "Random" },
+      { slug: "deb", name: "Debates", description: "Debates", category: "Random" },
+      { slug: "hot", name: "Hot Takes", description: "Hot Takes", category: "Random" },
+      { slug: "schizo", name: "Schizoposting", description: "Schizoposting", category: "Random" },
       
       // Communism
-      { slug: "marx", name: "Marxism", description: "Marxism-Leninism", category: "Communism" },
-      { slug: "nk", name: "North Korea", description: "North Korea (DPRK)", category: "Communism" },
-      { slug: "ch", name: "China", description: "China Discussion", category: "Communism" },
-      { slug: "ph", name: "Philippines", description: "Philippines", category: "Communism" },
+      { slug: "marx", name: "Marxism-Leninism", description: "Marxism-Leninism", category: "Communism" },
+      { slug: "np", name: "NPA/CPP", description: "NPA/CPP", category: "Communism" },
       
-      // Academics
-      { slug: "astro", name: "Astrophysics", description: "Astrophysics", category: "Academics" },
-      { slug: "qft", name: "Quantum Field Theory", description: "Quantum Field Theory", category: "Academics" },
-      { slug: "rel", name: "Relativity", description: "Theory of Relativity", category: "Academics" },
-      { slug: "st", name: "String Theory", description: "String Theory", category: "Academics" },
-      { slug: "mp", name: "Modern Physics", description: "Modern Physics", category: "Academics" },
-      { slug: "np", name: "Nuclear Physics", description: "Nuclear Physics", category: "Academics" },
-      { slug: "topo", name: "Topology", description: "Topology", category: "Academics" },
-      { slug: "calc", name: "Calculus", description: "Calculus", category: "Academics" },
-      
-      // Technology
-      { slug: "it", name: "IT", description: "Information Technology", category: "Technology" },
-      { slug: "ml", name: "Machine Learning", description: "Machine Learning", category: "Technology" },
-      { slug: "typ", name: "Typology", description: "Typology", category: "Technology" },
-      
-      // Culture & Misc
-      { slug: "lit", name: "Literature", description: "Literature", category: "Culture" },
-      { slug: "p", name: "Poetry", description: "Poetry", category: "Culture" },
-      { slug: "zoo", name: "Zoology", description: "Zoology", category: "Culture" },
-      { slug: "green", name: "Green-Text", description: "Green-Text Stories", category: "Culture" },
-      { slug: "pasta", name: "CopyPasta", description: "CopyPasta", category: "Culture" },
-      { slug: "lounge", name: "Orange Lounge", description: "Orange Lounge", category: "Culture" },
-      { slug: "neo", name: "Neo-Shibuya-Kei", description: "Neo-Shibuya-Kei", category: "Culture" },
+      // Hobby
+      { slug: "phys", name: "Physics", description: "Physics", category: "Hobby" },
+      { slug: "math", name: "Math", description: "Math", category: "Hobby" },
+      { slug: "it", name: "IT", description: "IT", category: "Hobby" },
       
       // Brain-rots
       { slug: "cap", name: "Capitalism", description: "Inhumanities of Capitalism", category: "Brain-rots" },
-      { slug: "lib", name: "Liberal", description: "Liberal Brain-rot", category: "Brain-rots" },
       { slug: "ana", name: "Anarchist", description: "Anarchist Brain-rot", category: "Brain-rots" },
+      { slug: "lib", name: "Liberal", description: "Liberal Brain-rot", category: "Brain-rots" },
       { slug: "theism", name: "Theist", description: "Theist Brain-rot", category: "Brain-rots" },
       { slug: "west", name: "Western", description: "Western Brain-rot", category: "Brain-rots" },
       { slug: "maga", name: "MAGA", description: "MAGA Brain-rot", category: "Brain-rots" },
-      
-      // Discussion
-      { slug: "d", name: "Debates", description: "Debates", category: "Discussion" },
-      { slug: "hot", name: "Hot Takes", description: "Hot Takes", category: "Discussion" },
-      { slug: "q", name: "Q&A", description: "Questions & Answers", category: "Discussion" },
-      { slug: "coal", name: "Coal", description: "Coal Posts", category: "Discussion" },
-      { slug: "gem", name: "Gem", description: "Gem Posts", category: "Discussion" },
     ];
 
     boardData.forEach(boardInfo => {
@@ -144,7 +124,10 @@ export class MemStorage implements IStorage {
     const now = new Date();
     const thread: Thread = {
       id: this.currentThreadId++,
-      ...insertThread,
+      boardId: insertThread.boardId,
+      subject: insertThread.subject || null,
+      isSticky: insertThread.isSticky || false,
+      isLocked: insertThread.isLocked || false,
       createdAt: now,
       lastBumpAt: now,
     };
@@ -183,7 +166,11 @@ export class MemStorage implements IStorage {
   async createPost(insertPost: InsertPost): Promise<Post> {
     const post: Post = {
       id: this.currentPostId++,
-      ...insertPost,
+      threadId: insertPost.threadId,
+      boardId: insertPost.boardId,
+      content: insertPost.content,
+      imageUrl: insertPost.imageUrl || null,
+      imageName: insertPost.imageName || null,
       createdAt: new Date(),
     };
     this.posts.set(post.id, post);

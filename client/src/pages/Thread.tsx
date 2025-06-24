@@ -59,7 +59,7 @@ export default function Thread() {
       {/* Thread Title */}
       {thread.subject && (
         <div style={{
-          backgroundColor: 'hsl(45, 30%, 85%)',
+          backgroundColor: 'hsl(210, 30%, 85%)',
           padding: '10px',
           margin: '10px 0',
           border: '1px solid var(--border)',

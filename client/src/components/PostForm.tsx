@@ -62,9 +62,18 @@ export default function PostForm({ boardSlug, threadId, onSuccess }: PostFormPro
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
+    if (!content.trim()) {
+      toast({ 
+        title: "Error", 
+        description: "Content is required",
+        variant: "destructive" 
+      });
+      return;
+    }
+    
     const formData = new FormData();
     if (!threadId && subject) formData.append('subject', subject);
-    formData.append('content', content);
+    formData.append('content', content.trim());
     if (image) formData.append('image', image);
 
     if (threadId) {

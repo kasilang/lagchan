@@ -103,8 +103,17 @@ The application uses three main entities:
 - **Database**: PostgreSQL 16 module integration
 
 ## Changelog
-- June 24, 2025. Initial setup
+- June 24, 2025: Initial setup with retro 2000s-style imageboard
+- June 24, 2025: Updated theme from orange/yellow to blue color scheme
+- June 24, 2025: Added meme-style image advertisements 
+- June 24, 2025: Updated board structure per user requirements (Random, Communism, Hobby, Brain-rots)
+- June 24, 2025: Fixed posting functionality and form validation
+- June 24, 2025: Configured for Netlify deployment with /public structure
 
 ## User Preferences
 
 Preferred communication style: Simple, everyday language.
+Theme: Blue color scheme instead of orange/yellow
+Deployment: Netlify with /public folder structure
+Ads: Meme-style image ads with cursed/unhinged content (4chan style, not cringe)
+Rules: Updated to full specification without emoji prefixes

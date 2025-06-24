@@ -53,7 +53,7 @@ export default function Board() {
       {/* Threads List */}
       <div style={{ marginTop: '20px' }}>
         <div style={{ 
-          backgroundColor: 'hsl(45, 30%, 85%)',
+          backgroundColor: 'hsl(210, 30%, 85%)',
           padding: '5px',
           fontWeight: 'bold',
           fontSize: '10pt',
@@ -70,7 +70,7 @@ export default function Board() {
               borderLeft: '1px solid var(--border)',
               borderRight: '1px solid var(--border)',
               borderBottom: '1px solid var(--border)',
-              backgroundColor: 'hsl(48, 35%, 89%)'
+              backgroundColor: 'hsl(210, 35%, 89%)'
             }}>
               <div style={{ fontSize: '9pt', marginBottom: '5px' }}>
                 <Link href={`/${boardSlug}/thread/${thread.id}`}>
@@ -88,7 +88,7 @@ export default function Board() {
           <div style={{
             padding: '20px',
             border: '1px solid var(--border)',
-            backgroundColor: 'hsl(48, 35%, 89%)',
+            backgroundColor: 'hsl(210, 35%, 89%)',
             textAlign: 'center',
             fontSize: '10pt'
           }}>

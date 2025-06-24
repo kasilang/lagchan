@@ -4,6 +4,7 @@ import { boardCategories, getCategoryIcon } from "@/lib/boards";
 import WelcomePopup from "@/components/WelcomePopup";
 import LatestPosts from "@/components/LatestPosts";
 import AdBanner from "@/components/AdBanner";
+import ImageAd from "@/components/ImageAd";
 
 export default function Home() {
   const { data: stats } = useQuery({
@@ -25,15 +26,15 @@ export default function Home() {
       {/* Navigation */}
       <div className="retro-navbar">
         <strong>Popular:</strong>
-        <Link href="/memes"><a>/memes/</a></Link>
-        <Link href="/pol"><a>/pol/</a></Link>
-        <Link href="/coal"><a>/coal/</a></Link>
-        <Link href="/gem"><a>/gem/</a></Link>
+        <Link href="/memes">/memes/</Link>
+        <Link href="/pol">/pol/</Link>
+        <Link href="/coal">/coal/</Link>
+        <Link href="/gem">/gem/</Link>
         <span style={{ marginLeft: '20px' }}><strong>Pages:</strong></span>
-        <Link href="/faq"><a>FAQ</a></Link>
-        <Link href="/rules"><a>Rules</a></Link>
-        <Link href="/contact"><a>Contact</a></Link>
-        <Link href="/legal"><a>Legal</a></Link>
+        <Link href="/faq">FAQ</Link>
+        <Link href="/rules">Rules</Link>
+        <Link href="/contact">Contact</Link>
+        <Link href="/legal">Legal</Link>
       </div>
 
       {/* Top Banner Ad */}
@@ -56,7 +57,7 @@ export default function Home() {
                 {boards.map((board) => (
                   <div key={board.slug} className="board-item">
                     <Link href={`/${board.slug}`}>
-                      <a>/{board.slug}/</a>
+                      /{board.slug}/
                     </Link>
                     <span className="board-desc"> - {board.description}</span>
                   </div>
@@ -77,7 +78,14 @@ export default function Home() {
             <div>Online Now: <strong>{stats?.onlineUsers || 0}</strong> anons</div>
           </div>
 
-          {/* Advertisement */}
+          {/* Image Advertisement */}
+          <ImageAd
+            imageUrl="https://i.imgur.com/CzXTtJV.jpg"
+            altText="Cursed meme ad"
+            caption="WHEN THE IMPOSTER IS SUS 😳"
+          />
+
+          {/* Text Advertisement */}
           <AdBanner
             title="🎮 RETRO GAME EMULATORS"
             content="Play classic NES, SNES, Genesis games in your browser! No downloads needed - 100% FREE!"
@@ -107,6 +115,13 @@ export default function Home() {
             </div>
           </div>
 
+          {/* Cursed Image Ad */}
+          <ImageAd
+            imageUrl="https://i.imgur.com/7drHiqr.gif"
+            altText="Spinning frog"
+            caption="IT IS WEDNESDAY MY DUDES"
+          />
+
           {/* Advertisement 2 */}
           <AdBanner
             title="💰 CRYPTO REVOLUTION"
@@ -116,6 +131,13 @@ export default function Home() {
             backgroundColor="#FFE4B5"
             titleColor="#8B4513"
             linkColor="#8B4513"
+          />
+
+          {/* Random Person Selfie Ad */}
+          <ImageAd
+            imageUrl="https://i.imgur.com/kPqvjqP.png"
+            altText="Random selfie"
+            caption="THIS COULD BE YOU ANON"
           />
 
           {/* Rules Reminder */}
@@ -138,10 +160,10 @@ export default function Home() {
           <strong>lagchan</strong> - User-run, self-coded Filipino-English forum for posting, overposting, and occasionally, class struggle.
         </div>
         <div>
-          <Link href="/faq"><a>FAQ</a></Link> | 
-          <Link href="/rules"><a>Rules</a></Link> | 
-          <Link href="/contact"><a>Contact</a></Link> | 
-          <Link href="/legal"><a>Legal</a></Link> | 
+          <Link href="/faq">FAQ</Link> | 
+          <Link href="/rules">Rules</Link> | 
+          <Link href="/contact">Contact</Link> | 
+          <Link href="/legal">Legal</Link> | 
           <a href="#statistics">Statistics</a>
         </div>
         <div style={{ marginTop: '5px', fontSize: '7pt' }}>
