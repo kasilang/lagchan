@@ -55,24 +55,46 @@ export default function handler(req, res) {
       .sort((a, b) => new Date(b.lastBumpAt) - new Date(a.lastBumpAt));
     res.status(200).json(boardThreads);
   } else if (req.method === 'POST') {
-    const { subject, content } = req.body;
-    if (!content) {
-      return res.status(400).json({ error: 'Content is required' });
+    try {
+      // Handle body parsing for Vercel
+      let body = req.body;
+      if (typeof body === 'string') {
+        body = JSON.parse(body);
+      }
+      
+      const { subject, content } = body || {};
+      if (!content) {
+        return res.status(400).json({ error: 'Content is required' });
+      }
+      
+      const now = new Date();
+      const thread = {
+        id: nextThreadId++,
+        boardId: board.id,
+        subject: subject || null,
+        isSticky: false,
+        isLocked: false,
+        createdAt: now,
+        lastBumpAt: now
+      };
+      
+      threads.push(thread);
+      
+      const post = {
+        id: nextThreadId * 1000, // Simple ID generation
+        threadId: thread.id,
+        boardId: board.id,
+        content,
+        imageUrl: null,
+        imageName: null,
+        createdAt: now
+      };
+      
+      res.status(200).json({ thread, post });
+    } catch (error) {
+      console.error('Error creating thread:', error);
+      res.status(500).json({ error: 'Failed to create thread' });
     }
-    
-    const now = new Date();
-    const thread = {
-      id: nextThreadId++,
-      boardId: board.id,
-      subject: subject || null,
-      isSticky: false,
-      isLocked: false,
-      createdAt: now,
-      lastBumpAt: now
-    };
-    
-    threads.push(thread);
-    res.status(200).json({ thread });
   } else {
     res.status(405).json({ error: 'Method not allowed' });
   }
