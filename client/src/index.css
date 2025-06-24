@@ -1,0 +1,380 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: hsl(60, 100%, 98%);
+  --foreground: hsl(0, 50%, 25%);
+  --muted: hsl(45, 20%, 92%);
+  --muted-foreground: hsl(25, 5.3%, 44.7%);
+  --popover: hsl(60, 100%, 98%);
+  --popover-foreground: hsl(0, 50%, 25%);
+  --card: hsl(48, 100%, 93%);
+  --card-foreground: hsl(0, 50%, 25%);
+  --border: hsl(0, 50%, 25%);
+  --input: hsl(45, 20%, 90%);
+  --primary: hsl(45, 80%, 65%);
+  --primary-foreground: hsl(0, 50%, 25%);
+  --secondary: hsl(45, 30%, 85%);
+  --secondary-foreground: hsl(24, 9.8%, 10%);
+  --accent: hsl(45, 30%, 85%);
+  --accent-foreground: hsl(24, 9.8%, 10%);
+  --destructive: hsl(0, 84.2%, 60.2%);
+  --destructive-foreground: hsl(60, 9.1%, 97.8%);
+  --ring: hsl(0, 50%, 25%);
+  --radius: 0.25rem;
+}
+
+.dark {
+  --background: hsl(240, 10%, 3.9%);
+  --foreground: hsl(0, 0%, 98%);
+  --muted: hsl(240, 3.7%, 15.9%);
+  --muted-foreground: hsl(240, 5%, 64.9%);
+  --popover: hsl(240, 10%, 3.9%);
+  --popover-foreground: hsl(0, 0%, 98%);
+  --card: hsl(240, 10%, 3.9%);
+  --card-foreground: hsl(0, 0%, 98%);
+  --border: hsl(240, 3.7%, 15.9%);
+  --input: hsl(240, 3.7%, 15.9%);
+  --primary: hsl(45, 80%, 65%);
+  --primary-foreground: hsl(0, 50%, 25%);
+  --secondary: hsl(240, 3.7%, 15.9%);
+  --secondary-foreground: hsl(0, 0%, 98%);
+  --accent: hsl(240, 3.7%, 15.9%);
+  --accent-foreground: hsl(0, 0%, 98%);
+  --destructive: hsl(0, 62.8%, 30.6%);
+  --destructive-foreground: hsl(0, 0%, 98%);
+  --ring: hsl(240, 4.9%, 83.9%);
+  --radius: 0.25rem;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+    font-family: Tahoma, Verdana, Arial, sans-serif;
+    font-size: 9pt;
+    line-height: 1.2;
+  }
+}
+
+/* Authentic 2000s styling */
+.retro-container {
+  width: 980px;
+  margin: 0 auto;
+  background-color: var(--background);
+}
+
+.retro-header {
+  background-color: hsl(45, 80%, 65%);
+  padding: 10px;
+  border-bottom: 2px solid var(--border);
+}
+
+.retro-logo {
+  font-size: 24pt;
+  font-weight: bold;
+  color: var(--foreground);
+  text-shadow: 1px 1px 0px hsl(45, 30%, 85%);
+}
+
+.retro-tagline {
+  font-size: 8pt;
+  color: hsl(220, 100%, 25%);
+  margin-top: 5px;
+}
+
+.retro-navbar {
+  background-color: hsl(45, 30%, 85%);
+  padding: 5px;
+  border-bottom: 1px solid var(--border);
+  font-size: 10pt;
+}
+
+.retro-navbar a {
+  color: hsl(240, 100%, 47%);
+  text-decoration: underline;
+  margin-right: 15px;
+  font-weight: normal;
+}
+
+.retro-navbar a:visited {
+  color: hsl(280, 100%, 33%);
+}
+
+.retro-navbar a:hover {
+  background-color: hsl(45, 80%, 65%);
+}
+
+.retro-main {
+  display: table;
+  width: 100%;
+  margin: 10px 0;
+}
+
+.retro-left-column {
+  display: table-cell;
+  width: 650px;
+  vertical-align: top;
+  padding-right: 10px;
+}
+
+.retro-right-column {
+  display: table-cell;
+  width: 320px;
+  vertical-align: top;
+}
+
+.board-group {
+  margin-bottom: 20px;
+  border: 1px solid var(--border);
+  background-color: hsl(48, 35%, 89%);
+}
+
+.board-group-header {
+  background-color: hsl(45, 30%, 85%);
+  padding: 5px;
+  font-weight: bold;
+  font-size: 10pt;
+  color: var(--foreground);
+  border-bottom: 1px solid var(--border);
+}
+
+.board-list {
+  padding: 10px;
+}
+
+.board-item {
+  display: block;
+  margin-bottom: 3px;
+  font-size: 9pt;
+}
+
+.board-item a {
+  color: hsl(240, 100%, 47%);
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.board-desc {
+  color: hsl(0, 0%, 40%);
+  font-weight: normal;
+}
+
+.latest-posts {
+  border: 1px solid var(--border);
+  background-color: hsl(48, 35%, 89%);
+  margin-bottom: 15px;
+}
+
+.latest-posts-header {
+  background-color: hsl(45, 30%, 85%);
+  padding: 5px;
+  font-weight: bold;
+  font-size: 10pt;
+  color: var(--foreground);
+  border-bottom: 1px solid var(--border);
+}
+
+.post-item {
+  padding: 5px;
+  border-bottom: 1px dotted hsl(0, 0%, 80%);
+  font-size: 9pt;
+}
+
+.post-item:last-child {
+  border-bottom: none;
+}
+
+.post-board {
+  color: hsl(240, 100%, 47%);
+  font-weight: bold;
+}
+
+.post-preview {
+  color: hsl(0, 0%, 20%);
+  margin-top: 2px;
+}
+
+.ad-banner {
+  border: 2px solid var(--border);
+  background-color: hsl(60, 100%, 85%);
+  text-align: center;
+  padding: 10px;
+  margin: 10px 0;
+  font-size: 8pt;
+  color: var(--foreground);
+}
+
+.welcome-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--background);
+  border: 3px solid var(--border);
+  padding: 20px;
+  z-index: 1000;
+  width: 400px;
+  box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
+}
+
+.popup-header {
+  font-weight: bold;
+  color: var(--foreground);
+  margin-bottom: 10px;
+  font-size: 11pt;
+}
+
+.popup-close {
+  float: right;
+  cursor: pointer;
+  color: var(--foreground);
+  font-weight: bold;
+  font-size: 16pt;
+}
+
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.3);
+  z-index: 999;
+}
+
+.retro-footer {
+  border-top: 2px solid var(--border);
+  padding: 10px;
+  background-color: hsl(45, 80%, 65%);
+  text-align: center;
+  font-size: 8pt;
+  color: var(--foreground);
+  margin-top: 20px;
+}
+
+.retro-footer a {
+  color: hsl(240, 100%, 47%);
+  text-decoration: underline;
+}
+
+.news-section {
+  border: 1px solid var(--border);
+  background-color: hsl(48, 35%, 89%);
+  margin-bottom: 15px;
+}
+
+.news-header {
+  background-color: hsl(45, 30%, 85%);
+  padding: 5px;
+  font-weight: bold;
+  font-size: 10pt;
+  color: var(--foreground);
+  border-bottom: 1px solid var(--border);
+}
+
+.news-content {
+  padding: 10px;
+  font-size: 9pt;
+}
+
+.stats-box {
+  border: 1px solid var(--border);
+  background-color: hsl(48, 35%, 89%);
+  padding: 10px;
+  margin-bottom: 15px;
+  font-size: 9pt;
+}
+
+.stats-header {
+  font-weight: bold;
+  color: var(--foreground);
+  margin-bottom: 5px;
+}
+
+/* Thread and post styling */
+.thread-post {
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: hsl(48, 35%, 89%);
+  border: 1px solid var(--border);
+}
+
+.post-header {
+  font-size: 9pt;
+  margin-bottom: 5px;
+  color: hsl(0, 0%, 40%);
+}
+
+.post-number {
+  color: hsl(240, 100%, 47%);
+  font-weight: bold;
+}
+
+.post-content {
+  font-size: 10pt;
+  line-height: 1.4;
+  white-space: pre-wrap;
+}
+
+.post-image {
+  max-width: 250px;
+  max-height: 250px;
+  margin: 5px 0;
+  cursor: pointer;
+  border: 1px solid var(--border);
+}
+
+.greentext {
+  color: hsl(120, 100%, 25%);
+}
+
+.reply-form {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: hsl(48, 35%, 89%);
+  border: 1px solid var(--border);
+}
+
+.form-table {
+  border-collapse: collapse;
+}
+
+.form-table td {
+  padding: 3px;
+  vertical-align: top;
+}
+
+.form-table label {
+  font-weight: bold;
+  font-size: 9pt;
+}
+
+.form-table input[type="text"],
+.form-table textarea {
+  background-color: var(--background);
+  border: 1px solid var(--border);
+  font-family: inherit;
+  font-size: 9pt;
+  padding: 2px;
+}
+
+.form-table input[type="file"] {
+  font-size: 9pt;
+}
+
+.form-table input[type="submit"] {
+  background-color: hsl(45, 30%, 85%);
+  border: 1px solid var(--border);
+  padding: 3px 8px;
+  font-size: 9pt;
+  cursor: pointer;
+}
+
+.form-table input[type="submit"]:hover {
+  background-color: hsl(45, 80%, 65%);
+}
